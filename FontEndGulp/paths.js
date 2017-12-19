@@ -6,6 +6,6 @@ module.exports={
 		staticFolder:"static",
 		htmlDistFolder:"FontEndDist",
 		revSrc:"FontEndRev",
-		serverFolder:"public"
+		serverFolder:""
 		
 }

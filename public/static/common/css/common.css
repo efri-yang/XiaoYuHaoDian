@@ -1,0 +1,123 @@
+.coms-header {
+  height: 109px;
+  border-bottom: 1px solid #dddddd; }
+
+.coms-header .logo {
+  float: left;
+  margin-top: 30px;
+  position: relative; }
+
+.coms-header .logo a {
+  width: 131px;
+  height: 48px;
+  overflow: hidden;
+  text-indent: -999999px;
+  display: block;
+  background: url("/public/static/common/images/coms_header_logo.png") no-repeat top center; }
+
+.coms-header .logo .beta {
+  position: absolute;
+  background: #777777;
+  right: 3px;
+  top: 0px;
+  height: 14px;
+  line-height: 14px;
+  padding: 0 3px;
+  font-size: 12px;
+  border-radius: 2px;
+  color: #fff; }
+
+.coms-header .header-nav {
+  float: left;
+  padding-left: 80px; }
+
+.coms-header .header-nav li {
+  float: left;
+  margin: 0 28px;
+  line-height: 109px;
+  display: inline; }
+
+.coms-header .header-nav li a {
+  position: relative;
+  color: #444444;
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 700; }
+
+.coms-header .header-nav li a:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  height: 2px;
+  background: #92764a;
+  width: 0;
+  transition: all 0.25s ease-out; }
+
+.coms-header .header-nav li a:hover {
+  text-decoration: none;
+  color: #92764a; }
+
+.coms-header .header-nav li a:hover:after {
+  left: 0;
+  width: 100%; }
+
+.coms-header .header-nav li.current a {
+  color: #92764a; }
+
+.coms-header .header-nav li.current a:after {
+  left: 0;
+  width: 100%; }
+
+.coms-container {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.coms-footer {
+  border-top: 1px solid #dddddd;
+  padding: 15px 0; }
+
+.coms-footer .ft_logo {
+  width: 76px;
+  height: 27px;
+  float: left;
+  overflow: hidden;
+  background: url("/public/static/common/images/coms_ft_logo.png") no-repeat top center; }
+
+.coms-footer .slogan {
+  float: left;
+  margin-top: 7px;
+  color: #555555;
+  margin-left: 10px; }
+
+.coms-footer .copyright {
+  float: right;
+  color: #999999;
+  font-size: 12px;
+  margin-top: 7px; }
+
+.coms-load-more {
+  padding: 20px 0 30px; }
+
+.coms-load-more .pic {
+  width: 36px;
+  height: 21px;
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  background: url("/public/static/common/images/coms_load_more.png") no-repeat 0 0;
+  -webkit-animation: animateLoadingIcon steps(4, end) 2s infinite;
+  animation: animateLoadingIcon steps(4, end) 2s infinite; }
+
+@-webkit-keyframes animateLoadingIcon {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: -144px 0; } }
+
+@keyframes animateLoadingIcon {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: -144px 0; } }

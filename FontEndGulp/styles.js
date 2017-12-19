@@ -60,7 +60,8 @@ function DistStyles(){
 		}))
 		.pipe(modifyCssUrls({
 			modify: function (url, filePath) {
-		       return "/"+conf.serverFolder+url;
+			   var serverFolder=!!conf.serverFolder ? ("/"+conf.serverFolder) :"";
+		       return serverFolder+url;
 		    }
 		}))
 		.pipe(sass().on('error', sass.logError))

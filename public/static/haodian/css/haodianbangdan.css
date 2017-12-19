@@ -1,0 +1,206 @@
+.gsrank-main .rank-list-info .name {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.gsrank-aside-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid #eeeeee;
+  width: 148px;
+  overflow: hidden; }
+
+.gsrank-aside-wrapper.fixed {
+  position: fixed;
+  left: 50%;
+  margin-left: -500px; }
+
+.gsrank-aside-box {
+  width: 148px;
+  background: #f9f9f9;
+  overflow: hidden;
+  position: relative; }
+
+.gsrank-aside-box .caption {
+  margin: 0 19px;
+  font-size: 12px;
+  color: #666666;
+  height: 38px;
+  line-height: 38px;
+  border-bottom: 1px solid #dddddd; }
+
+.gsrank-aside-box .list {
+  padding: 0 19px; }
+
+.gsrank-aside-box .list ul {
+  padding: 0 0 15px; }
+
+.gsrank-aside-box .list li {
+  margin-top: 12px; }
+
+.gsrank-aside-box .list li a {
+  color: #333333;
+  font-size: 16px;
+  position: relative;
+  display: block; }
+
+.gsrank-aside-box .list li a i {
+  width: 6px;
+  height: 12px;
+  overflow: hidden;
+  background: url("/public../images/arrow_r_1.png") no-repeat top center;
+  position: absolute;
+  top: 50%;
+  margin-top: -6px;
+  right: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-out; }
+
+.gsrank-aside-box .list li a:hover {
+  color: #92764a;
+  text-decoration: none; }
+
+.gsrank-aside-box .list li a:hover i {
+  right: 0px;
+  opacity: 1;
+  visibility: visible; }
+
+.gsrank-aside-box .list li.current a {
+  color: #92764a; }
+
+.gsrank-aside-box .list li.current a i {
+  right: 0px;
+  visibility: visible;
+  opacity: 1; }
+
+.gsrank-main {
+  width: 830px;
+  min-height: 500px;
+  overflow: hidden;
+  float: right;
+  position: relative;
+  margin-bottom: 50px;
+  /**
+	 * 828-28=800
+	 * 
+	 */ }
+
+.gsrank-main .soma-hd {
+  line-height: 30px;
+  padding-top: 10px; }
+
+.gsrank-main .soma-hd .tit {
+  float: left;
+  font-size: 20px;
+  color: #333333; }
+
+.gsrank-main .soma-hd .rank {
+  float: left;
+  height: 16px;
+  line-height: 16px;
+  background: #df8047;
+  border-radius: 2px;
+  font-family: arial;
+  padding: 0 3px;
+  color: #fff;
+  margin-top: 8px;
+  margin-left: 13px; }
+
+.gsrank-main .soma-hd .time {
+  font-size: 12px;
+  float: right;
+  color: #999999; }
+
+.gsrank-main .rank-list .cols {
+  float: left;
+  text-align: center; }
+
+.gsrank-main .rank-list .cols.cols-1 {
+  padding-left: 14px;
+  width: 60px; }
+
+.gsrank-main .rank-list .cols.cols-2 {
+  width: 305px; }
+
+.gsrank-main .rank-list .cols.cols-3 {
+  width: 60px; }
+
+.gsrank-main .rank-list .cols.cols-4 {
+  width: 60px; }
+
+.gsrank-main .rank-list .cols.cols-5 {
+  width: 60px; }
+
+.gsrank-main .rank-list .cols.cols-6 {
+  width: 95px; }
+
+.gsrank-main .rank-list .cols.cols-7 {
+  width: 70px; }
+
+.gsrank-main .rank-list .cols.cols-8 {
+  width: 80px;
+  padding-right: 24px; }
+
+.gsrank-main .rank-list-tit-seat {
+  height: 48px;
+  line-height: 48px;
+  margin-top: 15px; }
+
+.gsrank-main .rank-list-tit {
+  background: #f9f9f9;
+  height: 48px;
+  line-height: 48px;
+  border: 1px solid #eeeeee;
+  color: #777777;
+  width: 830px; }
+
+.gsrank-main .rank-list-tit.fixed {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  margin-left: -330px; }
+
+.gsrank-main .rank-list-info {
+  color: #333333; }
+
+.gsrank-main .rank-list-info li {
+  border-bottom: 1px solid #dddddd;
+  line-height: 18px; }
+
+.gsrank-main .rank-list-info li:last-child {
+  border-bottom: none; }
+
+.gsrank-main .rank-list-info .zs {
+  color: #92764a; }
+
+.gsrank-main .rank-list-info .cols {
+  padding: 15px 0; }
+
+.gsrank-main .rank-list-info .num {
+  border-radius: 100%;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  color: #fff;
+  background: #beb8b0;
+  display: block;
+  font-family: arial;
+  margin: 0 auto; }
+
+.gsrank-main .rank-list-info .num.first {
+  background: #df8047; }
+
+.gsrank-main .rank-list-info .num.second {
+  background: #dda072; }
+
+.gsrank-main .rank-list-info .num.third {
+  background: #deaf97; }
+
+.gsrank-main .rank-list-status .infinite-scroll-last,
+.gsrank-main .rank-list-status .infinite-scroll-error {
+  text-align: center;
+  padding: 30px 0;
+  color: #aeaeae; }

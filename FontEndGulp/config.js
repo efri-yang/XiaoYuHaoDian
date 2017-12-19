@@ -32,7 +32,7 @@ options.mod=options.mod ? ((options.mod==="all") ? "" :"/"+options.mod) :"";
 if(!!options.mod){
 	options.staticSrc=options.src+"/"+options.staticFolder;
 	options.staticDev=options.dev+"/"+options.staticFolder;
-	options.staticServerFolder=cpaths.serverFolder+"/"+options.staticFolder;
+	options.staticServerFolder=cpaths.serverFolder+options.staticFolder;
 
 	
 }else{
