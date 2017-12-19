@@ -89,7 +89,14 @@
 	overflow: hidden;
 	float: right;
 	position:relative;
-	margin-bottom:50px; 
+	margin-bottom:50px;
+	.infinite-loading{
+		.load-end{
+			text-align: center;
+			padding:30px 0;
+			color:#aeaeae; 
+		}
+	} 
 	.soma-hd{
 		line-height: 30px;
 		padding-top:10px; 
@@ -214,12 +221,6 @@
 		}
 	}
 
-	.rank-list-status{
-		.infinite-scroll-last,.infinite-scroll-error{
-			text-align: center;
-			padding:30px 0;
-			color:#aeaeae; 
-		}
-	}
+	
 }
 

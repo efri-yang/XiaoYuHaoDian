@@ -345,62 +345,64 @@
                 } else {
                     $seat.removeClass('fixed');
                 }
-            }));
+            }))
         })
     })(jQuery);
 
     //加载更多
     (function($) {
-            $(function() {
+        $(function() {
 
-                    var _renderItem = function(data) {
-                        return '<li class="clearfix">'+
-                                    '<div class="cols cols-1"><span class="num">'+data["rank"]+'</span></div>'+
-                                    '<div class="cols cols-2">'+data["name"]+'</div>'+
-                                    '<div class="cols cols-3">'+data["taste"]+'</div>'+
-                                    '<div class="cols cols-4">'+data["service"]+'</div>'+
-                                    '<div class="cols cols-5">'+data["environment"]+'</div>'+
-                                    '<div class="cols cols-6">'+data["goodcomment"]+'</div>'+
-                                    '<div class="cols cols-7">'+data["badcomment"]+'</div>'+
-                                    '<div class="cols cols-8"><span class="zs">'+data["heat"]+'</span></div></li>';
-                    }
-                        var $rankList = $("#J_rank-list-info");
-                        $rankList.infinitescroll({
-                            loading: {
-                                finishedMsg: "<em>没有更多数据了</em>", //没有更多数据的时候提示文字，会在speed 时间后消失
-                                selector: ".infinite-loading", 
-                                msg:$(' <div class="coms-load-more"><i class="pic"></i></div>'),
-                                speed:0, //显示加载更多消失的速度,
-                            },
-                            maxPage:4,
-                            extraScrollPx:10,
-                            navSelector: "#J_infinitescroll-nav", //导航的选择器，会被隐藏
-                            nextSelector: "#J_infinitescroll-next", //包含下一页链接的选择器
-                            appendCallback: false, // 一定要设置，否则会出现问题，配合template使用
-                            dataType: 'json', //返回的数据类型
-                            bufferPx: 50,
+            var _renderItem = function(data) {
+                return '<li class="clearfix">' +
+                    '<div class="cols cols-1"><span class="num">' + data["rank"] + '</span></div>' +
+                    '<div class="cols cols-2">' + data["name"] + '</div>' +
+                    '<div class="cols cols-3">' + data["taste"] + '</div>' +
+                    '<div class="cols cols-4">' + data["service"] + '</div>' +
+                    '<div class="cols cols-5">' + data["environment"] + '</div>' +
+                    '<div class="cols cols-6">' + data["goodcomment"] + '</div>' +
+                    '<div class="cols cols-7">' + data["badcomment"] + '</div>' +
+                    '<div class="cols cols-8"><span class="zs">' + data["heat"] + '</span></div></li>';
+            }
+            var $rankList = $("#J_rank-list-info");
+            $rankList.infinitescroll({
+                loading: {
+                    finishedMsg: "<p class='load-end'>òᆺó被你看光啦！</p>", //没有更多数据的时候提示文字，会在speed 时间后消失
+                    selector: ".infinite-loading",
+                    img: '',
+                    msg: $(' <div class="coms-load-more"><i class="pic"></i></div>'),
+                    speed: 0 //显示加载更多消失的速度,
 
-                            errorCallback: function() {
-                                alert("xxx")
-                            },
-                            path: function(index) {
-                               alert("xxx")
-                                return "http://wnworld.com/api/page.php?page=" + index;
-                            }
-                        }, function(data, opts) {
-                            console.dir(opts);
-                            // if(opts.maxPage==4){
-                            //     $rankList.infinitescroll("destroy");
-                            // }
-                            var elemArr=[],elemStr;
-                            for(var i=0;i<data.length;i++){
-                                elemStr=_renderItem(data[i]);
-                                elemArr.push(elemStr);
-                            }
-                            $rankList.append(elemArr.join(""));
-                        })
-                    })
-            })(jQuery)
+                },
+                maxPage: 4,
+                extraScrollPx: 10,
+                navSelector: "#J_infinitescroll-nav", //导航的选择器，会被隐藏
+                nextSelector: "#J_infinitescroll-next", //包含下一页链接的选择器
+                appendCallback: false, // 一定要设置，否则会出现问题，配合template使用
+                dataType: 'json', //返回的数据类型
+                bufferPx: 50,
+
+
+                path: function(index) {
+                    return "http://wnworld.com/api/page.php?page=" + index;
+                }
+            }, function(data, opts) {
+                // alert(opts.state.isBeyondMaxPage)
+                if (opts.maxPage == opts.state.currPage) {
+
+                    // $rankList.infinitescroll('update');
+                    // $rankList.infinitescroll("destroy");
+                }
+                var elemArr = [],
+                    elemStr;
+                for (var i = 0; i < data.length; i++) {
+                    elemStr = _renderItem(data[i]);
+                    elemArr.push(elemStr);
+                }
+                $rankList.append(elemArr.join(""));
+            })
+        })
+    })(jQuery)
     </script>
 </body>
 
