@@ -4,16 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>好店榜单</title>
+
     <!-- 网站公共会用到静态资源 -->
     <link rel="stylesheet" type="text/css" href="/static/common/css/base.css">
     <link rel="stylesheet" type="text/css" href="/static/common/css/common.css">
     <script type="text/javascript" src="/static/common/js/jquery/jquery-1.12.4.min.js"></script>
+    
+    
+
+
     <!-- 首页静态资源 -->
+   
     <script type="text/javascript" src="/static/common/js/jquery-throttle-debounce/jquery.ba-throttle-debounce.js"></script>
     <script type="text/javascript" src="/static/common/js/jquery-infiniteScroll/jquery.infinitescroll.js"></script>
     <script type="text/javascript" src="/static/common/js/jquery-mCustomScrollbar/jquery.mCustomScrollbar.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/common/js/jquery-mCustomScrollbar/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" type="text/css" href="/static/haodian/css/haodianbangdan.css">
+     <link rel="stylesheet" type="text/css" href="/static/haodian/css/haodianbangdan.css">
 </head>
 
 <body>
@@ -70,7 +76,7 @@
                 </ul>
             </div>
             <ul class="rank-list rank-list-info" id="J_rank-list-info">
-                <li class="clearfix">
+                <!-- <li class="clearfix">
                     <div class="cols cols-1"><span class="num first">1</span></div>
                     <div class="cols cols-2">
                         <p class="name">小王烧烤</p>
@@ -271,50 +277,56 @@
                     <div class="cols cols-6">98%</div>
                     <div class="cols cols-7">0.2%</div>
                     <div class="cols cols-8"><span class="zs">895</span></div>
-                </li>
+                </li> -->
             </ul>
-            <div class="infinite-loading"></div>
-            <div id="J_infinitescroll-nav">
-                <a id="J_infinitescroll-next" href="http://wnworld.com/api/page.php?page=1"></a>
+            <div class="rank-list-status" id="J_rank-list-status">
+                <div class="infinite-scroll-request">
+                    <p class="coms-load-more">
+                        <i class="pic"></i>
+                    </p>
+                </div>
+                <p class="infinite-scroll-last">òᆺó被你看光啦！</p>
+                <p class="infinite-scroll-error">o(╥﹏╥)o加载出错啦！</p>
             </div>
         </div>
     </div>
+
     @@include("../static/common/views/_footer.html")
     <script type="text/javascript">
     (function($) {
         $(function() {
             var $aside = $("#J_gsrank-aside-wrapper"),
-                $mScrollElem = $("#J_mContent_scroller"),
-                $asideScroll = $aside.find(".gsrank-aside-box"),
-                offsetTop = $aside.offset().top,
-                asideSH = $asideScroll.height(),
-                randDistance = 20;
-            $win = $(window);
-            var winH, remainH;
+                $mScrollElem=$("#J_mContent_scroller"),
+            	$asideScroll=$aside.find(".gsrank-aside-box"),
+            	offsetTop = $aside.offset().top,
+            	asideSH=$asideScroll.height(),
+            	randDistance=20;
+            	$win = $(window);
+            var winH,remainH;
 
-            function mCustomScrollInstance() {
-                $mScrollElem.mCustomScrollbar({
-                    theme: "minimal-dark",
-                    mouseWheel: { preventDefault: true },
-                    scrollInertia: 400
-                });
+            function mCustomScrollInstance(){
+            	$mScrollElem.mCustomScrollbar({
+					theme:"minimal-dark",
+                    mouseWheel:{ preventDefault:true },
+					scrollInertia:400
+				});
             }
 
-            function setH() {
-                if (remainH < asideSH) {
-                    $aside.css("height", remainH);
-                    $mScrollElem.css("height", remainH - 39);
-                    mCustomScrollInstance();
-                }
+            function setH(){
+            	if(remainH < asideSH){
+            		$aside.css("height",remainH);
+                     $mScrollElem.css("height",remainH-39);
+            		mCustomScrollInstance();
+            	}
             }
-
+          
             $win.on("scroll", $.throttle(250, function() {
                 var scrollTop = $(window).scrollTop();
                 if (scrollTop > offsetTop) {
-                    remainH = winH - randDistance - 60;
+                	remainH=winH-randDistance-60;
                     $aside.addClass('fixed');
                 } else {
-                    remainH = winH - offsetTop - randDistance;
+                	remainH=winH-offsetTop-randDistance;
                     $aside.removeClass('fixed')
                 }
                 setH();
@@ -323,24 +335,24 @@
             /**
              *   判断 屏幕高度 > 滚动内容高度    那么设置高度，然后实例化插件                   
              */
-            $win.on("resize", $.throttle(250, function() {
-                winH = $win.height();
-                remainH = winH - offsetTop - randDistance;
-                setH();
+            $win.on("resize",$.throttle(250, function() {
+            	winH=$win.height();
+            	remainH=winH-offsetTop-randDistance;
+            	setH();
             })).trigger('resize');
 
 
         });
     })(jQuery);
 
-    (function($) {
+     (function($) {
         $(function() {
             var $seat = $(".rank-list-tit"),
                 $win = $(window),
                 offsetTop = $seat.offset().top;
             $win.on("scroll", $.throttle(100, function() {
                 var scrollTop = $win.scrollTop();
-                if (scrollTop > offsetTop) {
+                 if (scrollTop > offsetTop) {
                     $seat.addClass('fixed');
                 } else {
                     $seat.removeClass('fixed');
@@ -351,56 +363,63 @@
 
     //加载更多
     (function($) {
-            $(function() {
+        $(function() {
+            var $maxPage = 4;
 
-                    var _renderItem = function(data) {
-                        return '<li class="clearfix">'+
-                                    '<div class="cols cols-1"><span class="num">'+data["rank"]+'</span></div>'+
-                                    '<div class="cols cols-2">'+data["name"]+'</div>'+
-                                    '<div class="cols cols-3">'+data["taste"]+'</div>'+
-                                    '<div class="cols cols-4">'+data["service"]+'</div>'+
-                                    '<div class="cols cols-5">'+data["environment"]+'</div>'+
-                                    '<div class="cols cols-6">'+data["goodcomment"]+'</div>'+
-                                    '<div class="cols cols-7">'+data["badcomment"]+'</div>'+
-                                    '<div class="cols cols-8"><span class="zs">'+data["heat"]+'</span></div></li>';
+            var $loadStatus = $("#J_rank-list-status"),
+                $loadStatusLast = $loadStatus.find(".infinite-scroll-last")
+            	$rankList = $("#J_rank-list-info");
+
+            var infScroll;
+
+            $rankList.infiniteScroll({
+                path: function() {
+                    if (this.loadCount < 4) {
+                        var pageNumber = (this.loadCount + 1);
+                        return 'http://wnworld.com/api/page.php?page=' + pageNumber;
                     }
-                        var $rankList = $("#J_rank-list-info");
-                        $rankList.infinitescroll({
-                            loading: {
-                                finishedMsg: "<em>没有更多数据了</em>", //没有更多数据的时候提示文字，会在speed 时间后消失
-                                selector: ".infinite-loading", 
-                                msg:$(' <div class="coms-load-more"><i class="pic"></i></div>'),
-                                speed:0, //显示加载更多消失的速度,
-                            },
-                            maxPage:4,
-                            extraScrollPx:10,
-                            navSelector: "#J_infinitescroll-nav", //导航的选择器，会被隐藏
-                            nextSelector: "#J_infinitescroll-next", //包含下一页链接的选择器
-                            appendCallback: false, // 一定要设置，否则会出现问题，配合template使用
-                            dataType: 'json', //返回的数据类型
-                            bufferPx: 50,
+                },
+                append: false,
+                responseType: 'json',
+                history: false,
+                status: '#J_rank-list-status'
+            });
+            $rankList.on('load.infiniteScroll', onInfiniteScrollLoad);
+            $rankList.infiniteScroll('loadNextPage');
+            infScroll = $rankList.data('infiniteScroll');
 
-                            errorCallback: function() {
-                                alert("xxx")
-                            },
-                            path: function(index) {
-                               alert("xxx")
-                                return "http://wnworld.com/api/page.php?page=" + index;
-                            }
-                        }, function(data, opts) {
-                            console.dir(opts);
-                            // if(opts.maxPage==4){
-                            //     $rankList.infinitescroll("destroy");
-                            // }
-                            var elemArr=[],elemStr;
-                            for(var i=0;i<data.length;i++){
-                                elemStr=_renderItem(data[i]);
-                                elemArr.push(elemStr);
-                            }
-                            $rankList.append(elemArr.join(""));
-                        })
-                    })
-            })(jQuery)
+            function onInfiniteScrollLoad(event, response) {
+                var str = "";
+                for (var i = 0; i < response.length; i++) {
+                    str += '<li class="clearfix">'
+                    str += '<div class="cols cols-1"><span class="num">' + response[i]["rank"] + '</span></div>'
+                    str += '<div class="cols cols-2">' + response[i]["name"] + '</div>'
+                    str += '<div class="cols cols-3">' + response[i]["taste"] + '</div>'
+                    str += '<div class="cols cols-4">' + response[i]["service"] + '</div>'
+                    str += '<div class="cols cols-5">' + response[i]["environment"] + '</div>'
+                    str += '<div class="cols cols-6">' + response[i]["goodcomment"] + '</div>'
+                    str += '<div class="cols cols-7">' + response[i]["badcomment"] + '</div>'
+                    str += '<div class="cols cols-8"><span class="zs">' + response[i]["heat"] + '</span></div>'
+                    str += '</li>';
+                }
+                $rankList.infiniteScroll('appendItems', $(str));
+                if (infScroll.loadCount >= $maxPage) {
+
+                    $rankList.infiniteScroll('option', {
+                        loadOnScroll: false
+                    });
+                    $loadStatus.show();
+                    $loadStatusLast.fadeIn();
+                    setTimeout(function() {
+                    	$loadStatusLast.fadeOut();
+                        $loadStatus.fadeOut();
+                    }, 2500)
+                }
+            }
+
+
+        })
+    })(jQuery)
     </script>
 </body>
 
